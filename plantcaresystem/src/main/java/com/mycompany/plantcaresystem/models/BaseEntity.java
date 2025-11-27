@@ -8,5 +8,5 @@ public abstract class BaseEntity {
         return id;
     }
 
-    public abstract String getInfo(); // polymorphic method
+    public abstract String getInfo();
 }

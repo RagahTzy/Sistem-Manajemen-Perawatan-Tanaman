@@ -20,7 +20,6 @@
                     <javafx.scene.layout.Priority fx:value="ALWAYS"/>
                 </HBox.hgrow>
             </Region>
-            <!-- optional: tambah tombol lain di kanan -->
         </HBox>
     </top>
 

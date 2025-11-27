@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mycompany.plantcaresystem.controllers.AdminDashboardController">
+
+    <top>
+        <HBox spacing="10" style="-fx-padding: 10;">
+            <Label text="ADMIN DASHBOARD" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <Region>
+                <HBox.hgrow>
+                    <Priority>ALWAYS</Priority>
+                </HBox.hgrow>
+            </Region>
+
+            <Button text="Logout" onAction="#logout"/>
+        </HBox>
+    </top>
+
+
+    <center>
+        <VBox spacing="15" alignment="CENTER">
+            <Button text="Kelola Tanaman" onAction="#openPlantManagement" maxWidth="200"/>
+            <Button text="Export Semua Tanaman" onAction="#exportPlants" maxWidth="200"/>
+        </VBox>
+    </center>
+</BorderPane>

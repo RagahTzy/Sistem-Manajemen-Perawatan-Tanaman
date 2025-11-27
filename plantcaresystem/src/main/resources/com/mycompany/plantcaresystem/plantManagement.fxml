@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mycompany.plantcaresystem.controllers.PlantController">
+
+    <top>
+        <HBox spacing="10" style="-fx-padding: 10;">
+            <Button text="⬅ Back" onAction="#goBack"/>
+            <Label text="MANAGEMENT TANAMAN"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Region hgrow="ALWAYS"/>
+            <!-- optional: tambah tombol lain di kanan -->
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="12" alignment="CENTER" style="-fx-padding: 10;">
+            <HBox spacing="10">
+                <TextField fx:id="nameField" promptText="Nama Tanaman" />
+                <TextField fx:id="ageField" promptText="Usia (minggu)" />
+                <TextField fx:id="userIdField" promptText="Owner User ID" />
+                <Button text="Add" onAction="#addPlant"/>
+            </HBox>
+
+            <ListView fx:id="listPlants" prefHeight="350" prefWidth="500"/>
+
+            <Button text="Delete Selected" onAction="#deleteSelected" maxWidth="200"/>
+        </VBox>
+    </center>
+
+</BorderPane>

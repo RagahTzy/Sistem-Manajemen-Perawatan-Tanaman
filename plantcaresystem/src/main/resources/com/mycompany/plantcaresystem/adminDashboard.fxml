@@ -17,7 +17,7 @@
 
             <Region>
                 <HBox.hgrow>
-                    <Priority>ALWAYS</Priority>
+                    <javafx.scene.layout.Priority fx:value="ALWAYS"/>
                 </HBox.hgrow>
             </Region>
 

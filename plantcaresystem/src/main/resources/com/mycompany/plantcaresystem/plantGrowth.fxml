@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mycompany.plantcaresystem.controllers.PlantGrowthController">
+    <top>
+        <HBox spacing="10" style="-fx-padding: 10;">
+            <Button text="⬅ Back" onAction="#goBack"/>
+            <Label fx:id="headerLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+            <Label text="Riwayat Update User:" style="-fx-font-weight: bold;"/>
+            <ListView fx:id="growthList" prefHeight="400" prefWidth="500"/>
+        </VBox>
+    </center>
+</BorderPane>

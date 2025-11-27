@@ -6,8 +6,39 @@ import com.mycompany.plantcaresystem.models.Plant;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.util.List;
+import com.mycompany.plantcaresystem.util.Context;
 
 public class PlantController {
+
+    @FXML
+    private void viewGrowth() {
+        Plant sel = listPlants.getSelectionModel().getSelectedItem();
+        if (sel == null) {
+            error("Pilih tanaman dulu untuk melihat laporan.");
+            return;
+        }
+        try {
+            Context.selectedPlant = sel; // Simpan tanaman ke Context
+            App.setRoot("plantGrowth");  // Pindah ke halaman growth
+        } catch (Exception e) {
+            error(e.getMessage());
+        }
+    }
+
+    @FXML
+    private void manageSchedule() {
+        Plant sel = listPlants.getSelectionModel().getSelectedItem();
+        if (sel == null) {
+            error("Pilih tanaman dulu untuk mengatur jadwal.");
+            return;
+        }
+        try {
+            Context.selectedPlant = sel; // Simpan tanaman ke Context
+            App.setRoot("plantSchedule"); // Pindah ke halaman schedule
+        } catch (Exception e) {
+            error(e.getMessage());
+        }
+    }
 
     @FXML
     private TextField nameField;
@@ -84,5 +115,4 @@ public class PlantController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
-
 }

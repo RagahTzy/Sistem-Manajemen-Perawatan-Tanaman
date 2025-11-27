@@ -2,6 +2,7 @@ package com.mycompany.plantcaresystem;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -19,7 +20,15 @@ public class App extends Application {
 
     public static void setRoot(String fxmlName) throws Exception {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("/com/mycompany/plantcaresystem/" + fxmlName + ".fxml"));
-        Scene scene = new Scene(loader.load());
+        Parent root = loader.load(); // Load root dulu
+
+        Scene scene = new Scene(root);
+
+        // --- TAMBAHAN: Load CSS Cyberpunk ---
+        String css = App.class.getResource("/com/mycompany/plantcaresystem/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        // ------------------------------------
+
         stage.setScene(scene);
     }
 }

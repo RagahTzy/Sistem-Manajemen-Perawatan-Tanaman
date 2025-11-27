@@ -12,23 +12,32 @@
 
     <top>
         <HBox spacing="10" style="-fx-padding: 10;">
-            <Label text="USER DASHBOARD" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-            <Region>
-                <HBox.hgrow>
-                    <javafx.scene.layout.Priority fx:value="ALWAYS"/>
-                </HBox.hgrow>
-            </Region>
+            <Label fx:id="welcomeLabel" text="USER DASHBOARD" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
             <Button text="Logout" onAction="#logout"/>
         </HBox>
     </top> 
 
     <center>
-        <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
-            <Label fx:id="welcomeLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox spacing="20" style="-fx-padding: 20;">
+            <VBox spacing="10">
+                <Label text="Tanaman Anda:" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="userPlantList" prefHeight="200" prefWidth="250"/>
 
-            <Label text="Tanaman Anda:" style="-fx-font-size: 14px;"/>
-            <ListView fx:id="userPlantList" prefHeight="250" prefWidth="300"/>
-        </VBox>
+                <Separator/>
+                <Label text="Update Pertumbuhan" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="heightField" promptText="Tinggi (cm)" maxWidth="250"/>
+                <TextField fx:id="conditionField" promptText="Kondisi (Misal: Subur, Daun Kuning)" maxWidth="250"/>
+                <Button text="Simpan Laporan" onAction="#saveGrowthRecord" maxWidth="250"/>
+            </VBox>
+
+            <VBox spacing="10">
+                <Label text="Jadwal Perawatan (To-Do):" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="scheduleList" prefHeight="300" prefWidth="300"/>
+                <Button text="Tandai Selesai (Disiram/Dipupuk)" onAction="#completeTask"/>
+            </VBox>
+        </HBox>
     </center>
-
 </BorderPane>

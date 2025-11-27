@@ -9,27 +9,29 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mycompany.plantcaresystem.controllers.AdminDashboardController">
+            fx:controller="com.mycompany.plantcaresystem.controllers.AdminDashboardController"
+            prefWidth="600.0" prefHeight="400.0">
 
     <top>
-        <HBox spacing="10" style="-fx-padding: 10;">
+        <HBox spacing="10" style="-fx-padding: 15;" styleClass="top-panel">
             <Label text="ADMIN DASHBOARD" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
 
-            <Region>
-                <HBox.hgrow>
-                    <javafx.scene.layout.Priority fx:value="ALWAYS"/>
-                </HBox.hgrow>
-            </Region>
+            <Region HBox.hgrow="ALWAYS" />
 
             <Button text="Logout" onAction="#logout"/>
         </HBox>
     </top>
 
-
     <center>
-        <VBox spacing="15" alignment="CENTER">
-            <Button text="Kelola Tanaman" onAction="#openPlantManagement" maxWidth="200"/>
-            <Button text="Export Semua Tanaman" onAction="#exportPlants" maxWidth="200"/>
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 20;">
+            <Label text="Selamat Datang, Admin!" style="-fx-font-size: 16px;"/>
+            
+            <Button text="Kelola Tanaman" onAction="#openPlantManagement" 
+                    maxWidth="250" style="-fx-font-size: 14px; -fx-padding: 10;"/>
+                    
+            <Button text="Export Semua Tanaman" onAction="#exportPlants" 
+                    maxWidth="250" style="-fx-font-size: 14px; -fx-padding: 10;"/>
         </VBox>
     </center>
+    
 </BorderPane>

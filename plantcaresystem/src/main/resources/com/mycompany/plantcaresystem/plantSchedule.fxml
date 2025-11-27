@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mycompany.plantcaresystem.controllers.PlantScheduleController">
+    <top>
+        <HBox spacing="10" style="-fx-padding: 10;">
+            <Button text="⬅ Back" onAction="#goBack"/>
+            <Label fx:id="headerLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="15" alignment="CENTER" style="-fx-padding: 20;">
+            <HBox spacing="10" alignment="CENTER">
+                <TextField fx:id="actionField" promptText="Tindakan (misal: Siram)"/>
+                <TextField fx:id="freqField" promptText="Interval (hari)" prefWidth="100"/>
+                <Button text="Tambah Jadwal" onAction="#addSchedule"/>
+            </HBox>
+            
+            <Label text="Daftar Jadwal Aktif:"/>
+            <ListView fx:id="scheduleList" prefHeight="300" prefWidth="400"/>
+        </VBox>
+    </center>
+</BorderPane>

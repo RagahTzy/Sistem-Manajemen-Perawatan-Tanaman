@@ -18,8 +18,8 @@ public class PlantController {
             return;
         }
         try {
-            Context.selectedPlant = sel; // Simpan tanaman ke Context
-            App.setRoot("plantGrowth");  // Pindah ke halaman growth
+            Context.selectedPlant = sel;
+            App.setRoot("plantGrowth");
         } catch (Exception e) {
             error(e.getMessage());
         }
@@ -33,8 +33,8 @@ public class PlantController {
             return;
         }
         try {
-            Context.selectedPlant = sel; // Simpan tanaman ke Context
-            App.setRoot("plantSchedule"); // Pindah ke halaman schedule
+            Context.selectedPlant = sel;
+            App.setRoot("plantSchedule");
         } catch (Exception e) {
             error(e.getMessage());
         }
@@ -52,6 +52,41 @@ public class PlantController {
     @FXML
     public void initialize() {
         load();
+
+        listPlants.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                nameField.setText(newVal.getName());
+                ageField.setText(String.valueOf(newVal.getAge()));
+                userIdField.setText(String.valueOf(newVal.getUserId()));
+            }
+        });
+    }
+
+    @FXML
+    private void updatePlant() {
+        Plant selected = listPlants.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            error("Pilih tanaman yang mau diedit dulu!");
+            return;
+        }
+
+        try {
+            String name = nameField.getText().trim();
+            int age = Integer.parseInt(ageField.getText().trim());
+            int uid = Integer.parseInt(userIdField.getText().trim());
+
+            Plant p = new Plant(selected.getId(), name, age, uid);
+
+            PlantDAO.update(p);
+
+            clearForm();
+            load();
+            info("Data tanaman berhasil diupdate!");
+        } catch (NumberFormatException nfe) {
+            error("Age dan UserID harus angka");
+        } catch (Exception e) {
+            error("Gagal update: " + e.getMessage());
+        }
     }
 
     private void load() {

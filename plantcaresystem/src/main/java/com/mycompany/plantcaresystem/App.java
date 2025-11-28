@@ -20,14 +20,12 @@ public class App extends Application {
 
     public static void setRoot(String fxmlName) throws Exception {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("/com/mycompany/plantcaresystem/" + fxmlName + ".fxml"));
-        Parent root = loader.load(); // Load root dulu
+        Parent root = loader.load();
 
         Scene scene = new Scene(root);
 
-        // --- TAMBAHAN: Load CSS Cyberpunk ---
         String css = App.class.getResource("/com/mycompany/plantcaresystem/style.css").toExternalForm();
         scene.getStylesheets().add(css);
-        // ------------------------------------
 
         stage.setScene(scene);
     }

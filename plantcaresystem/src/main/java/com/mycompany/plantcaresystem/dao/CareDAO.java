@@ -9,7 +9,6 @@ import java.util.List;
 
 public class CareDAO {
 
-    // Tambah Jadwal (Admin)
     public static void addSchedule(int plantId, String action, int freq) throws SQLException {
         String sql = "INSERT INTO care_schedules (plant_id, action, frequency_days, next_due_date) VALUES (?, ?, ?, CURDATE())";
         try (Connection c = Database.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
@@ -20,7 +19,6 @@ public class CareDAO {
         }
     }
 
-    // Ambil Jadwal berdasarkan User (Untuk ditampilkan di Dashboard User)
     public static List<CareSchedule> getSchedulesByUser(int userId) {
         List<CareSchedule> list = new ArrayList<>();
         String sql = "SELECT cs.* FROM care_schedules cs JOIN plants p ON cs.plant_id = p.id WHERE p.user_id = ?";
@@ -40,13 +38,11 @@ public class CareDAO {
         return list;
     }
 
-    // Tandai selesai (Update tanggal next_due_date & catat log)
     public static void completeTask(CareSchedule cs) throws SQLException {
         Connection c = Database.getConnection();
         try {
-            c.setAutoCommit(false); // Transaksi
+            c.setAutoCommit(false);
 
-            // 1. Insert ke Log
             String logSql = "INSERT INTO care_logs (plant_id, action, date_performed, notes) VALUES (?, ?, CURDATE(), 'Selesai')";
             try (PreparedStatement ps = c.prepareStatement(logSql)) {
                 ps.setInt(1, cs.getPlantId());
@@ -54,7 +50,6 @@ public class CareDAO {
                 ps.executeUpdate();
             }
 
-            // 2. Update Next Due Date
             String updateSql = "UPDATE care_schedules SET next_due_date = ? WHERE id = ?";
             try (PreparedStatement ps = c.prepareStatement(updateSql)) {
                 LocalDate next = LocalDate.now().plusDays(cs.getFrequencyDays());

@@ -34,10 +34,7 @@ public class PlantScheduleController {
     }
 
     private void loadData() {
-        // Karena kita admin, kita ambil jadwal milik User pemilik tanaman ini
         List<CareSchedule> list = CareDAO.getSchedulesByUser(currentPlant.getUserId());
-        // Filter list hanya untuk plant ini (Logic sederhana)
-        // Idealnya buat method getByPlantId di DAO, tapi filter manual oke untuk skla kecil
         scheduleList.getItems().clear();
         for (CareSchedule cs : list) {
             if (cs.getPlantId() == currentPlant.getId()) {

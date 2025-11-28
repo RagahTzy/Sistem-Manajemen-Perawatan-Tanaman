@@ -19,7 +19,6 @@ public class UserDashboardController {
     @FXML
     private ListView<Plant> userPlantList;
 
-    // --- TAMBAHAN BARU (Pastikan ini ada) ---
     @FXML
     private ListView<CareSchedule> scheduleList;
     @FXML
@@ -35,16 +34,13 @@ public class UserDashboardController {
     private void refreshData() {
         User u = Session.getCurrentUser();
         if (u != null) {
-            // Cek null safety untuk label (opsional, jaga-jaga)
             if (welcomeLabel != null) {
                 welcomeLabel.setText("Welcome, " + u.getUsername());
             }
 
-            // Load Tanaman
             List<Plant> plants = PlantDAO.getByUser(u.getId());
             userPlantList.getItems().setAll(plants);
 
-            // Load Jadwal Perawatan
             List<CareSchedule> schedules = CareDAO.getSchedulesByUser(u.getId());
             scheduleList.getItems().setAll(schedules);
         }
@@ -58,7 +54,6 @@ public class UserDashboardController {
             return;
         }
         try {
-            // Validasi input kosong
             if (heightField.getText().isEmpty() || conditionField.getText().isEmpty()) {
                 showAlert("Isi tinggi dan kondisi tanaman!");
                 return;
@@ -86,8 +81,8 @@ public class UserDashboardController {
             return;
         }
         try {
-            CareDAO.completeTask(sel); // Update DB
-            refreshData(); // Refresh list jadwal
+            CareDAO.completeTask(sel);
+            refreshData();
             showAlert("Perawatan tercatat! Jadwal berikutnya sudah diupdate.");
         } catch (Exception e) {
             showAlert("Gagal: " + e.getMessage());

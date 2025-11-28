@@ -30,6 +30,7 @@
                 <TextField fx:id="ageField" promptText="Usia (minggu)" />
                 <TextField fx:id="userIdField" promptText="Owner User ID" />
                 <Button text="Add" onAction="#addPlant"/>
+                <Button text="Update" onAction="#updatePlant"/>
             </HBox>
 
             <ListView fx:id="listPlants" prefHeight="350" prefWidth="500"/>

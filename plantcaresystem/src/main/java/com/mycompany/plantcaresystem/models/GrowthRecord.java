@@ -18,7 +18,6 @@ public class GrowthRecord {
         this.date = date;
     }
 
-    // Getters
     public int getId() {
         return id;
     }

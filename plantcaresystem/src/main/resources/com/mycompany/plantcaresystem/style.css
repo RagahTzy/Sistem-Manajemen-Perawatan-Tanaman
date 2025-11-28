@@ -1,40 +1,33 @@
-/* --- CYBERPUNK GREEN NEON THEME --- */
-
-/* 1. Background Hitam Pekat */
 .root {
-    -fx-background-color: #050505; /* Hitam sangat gelap */
-    -fx-font-family: 'Segoe UI', 'Consolas', monospace; /* Font ala coding */
+    -fx-background-color: #050505;
+    -fx-font-family: 'Segoe UI', 'Consolas', monospace;
 }
 
-/* 2. Top Bar (Panel Atas) */
 .top-panel {
     -fx-background-color: #0a0a0a;
-    -fx-border-color: #39ff14; /* Hijau Neon */
-    -fx-border-width: 0 0 2px 0; /* Garis bawah saja */
+    -fx-border-color: #39ff14;
+    -fx-border-width: 0 0 2px 0;
     -fx-effect: dropshadow(three-pass-box, rgba(57, 255, 20, 0.3), 10, 0, 0, 0);
 }
 
-/* 3. Label / Teks Biasa */
 .label {
-    -fx-text-fill: #e0e0e0; /* Putih agak abu biar mata gak sakit */
+    -fx-text-fill: #e0e0e0;
     -fx-font-size: 14px;
 }
 
-/* 4. Judul Besar (Gunakan styleClass="header" di FXML pada Label judul) */
 .label.header {
-    -fx-text-fill: #39ff14; /* Hijau Neon */
+    -fx-text-fill: #39ff14;
     -fx-font-size: 22px;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow(three-pass-box, rgba(57, 255, 20, 0.8), 10, 0, 0, 0); /* Glowing */
+    -fx-effect: dropshadow(three-pass-box, rgba(57, 255, 20, 0.8), 10, 0, 0, 0);
 }
 
-/* 5. BUTTON UTAMA (Outline Hijau) */
 .button {
     -fx-background-color: #000000;
     -fx-text-fill: #39ff14;
     -fx-border-color: #39ff14;
     -fx-border-width: 2px;
-    -fx-background-radius: 0; /* Kotak tajam */
+    -fx-background-radius: 0;
     -fx-border-radius: 0;
     -fx-cursor: hand;
     -fx-font-weight: bold;
@@ -42,9 +35,9 @@
 }
 
 .button:hover {
-    -fx-background-color: #39ff14; /* Isi Hijau saat hover */
-    -fx-text-fill: #000000; /* Teks jadi Hitam */
-    -fx-effect: dropshadow(three-pass-box, #39ff14, 15, 0, 0, 0); /* Glowing kuat */
+    -fx-background-color: #39ff14;
+    -fx-text-fill: #000000;
+    -fx-effect: dropshadow(three-pass-box, #39ff14, 15, 0, 0, 0);
 }
 
 .button:pressed {
@@ -52,7 +45,6 @@
     -fx-border-color: #28b80e;
 }
 
-/* 6. Tombol Logout (Bisa merah atau tetap hijau, ini opsi Merah Neon biar beda) */
 .button.danger {
     -fx-text-fill: #ff3333; 
     -fx-border-color: #ff3333;
@@ -63,23 +55,21 @@
     -fx-effect: dropshadow(three-pass-box, #ff3333, 15, 0, 0, 0);
 }
 
-/* 7. Input Field (TextField & PasswordField) */
 .text-field, .password-field {
     -fx-background-color: #0f0f0f;
     -fx-text-fill: #39ff14;
     -fx-prompt-text-fill: #555;
     -fx-border-color: #39ff14;
-    -fx-border-width: 0 0 1px 0; /* Garis bawah tipis */
+    -fx-border-width: 0 0 1px 0;
     -fx-background-radius: 0;
 }
 
 .text-field:focused, .password-field:focused {
     -fx-background-color: #1a1a1a;
-    -fx-border-width: 0 0 2px 0; /* Garis menebal saat diketik */
+    -fx-border-width: 0 0 2px 0;
     -fx-effect: dropshadow(three-pass-box, rgba(57, 255, 20, 0.5), 5, 0, 0, 0);
 }
 
-/* 8. ListView (Daftar Tanaman) */
 .list-view {
     -fx-background-color: #0a0a0a;
     -fx-border-color: #39ff14;
@@ -104,7 +94,6 @@
     -fx-background-color: #0f0f0f;
 }
 
-/* Scroll Bar biar gak putih ngerusak pemandangan */
 .scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
     -fx-background-color: #39ff14;
 }

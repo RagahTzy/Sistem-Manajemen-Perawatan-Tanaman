@@ -8,7 +8,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mycompany.plantcaresystem.controllers.UserDashboardController">
+            fx:controller="com.mycompany.plantcaresystem.controllers.UserDashboardController"
+            prefWidth="800.0" prefHeight="600.0">
 
     <top>
         <HBox spacing="10" style="-fx-padding: 10;">
@@ -21,7 +22,8 @@
     </top> 
 
     <center>
-        <HBox spacing="20" style="-fx-padding: 20;">
+        <HBox spacing="20" style="-fx-padding: 20;" alignment="CENTER">
+
             <VBox spacing="10">
                 <Label text="Tanaman Anda:" style="-fx-font-weight: bold;"/>
                 <ListView fx:id="userPlantList" prefHeight="200" prefWidth="250"/>
@@ -30,14 +32,15 @@
                 <Label text="Update Pertumbuhan" style="-fx-font-weight: bold;"/>
                 <TextField fx:id="heightField" promptText="Tinggi (cm)" maxWidth="250"/>
                 <TextField fx:id="conditionField" promptText="Kondisi (Misal: Subur, Daun Kuning)" maxWidth="250"/>
+
                 <Button text="Simpan Laporan" onAction="#saveGrowthRecord" maxWidth="250"/>
             </VBox>
 
             <VBox spacing="10">
                 <Label text="Jadwal Perawatan (To-Do):" style="-fx-font-weight: bold;"/>
                 <ListView fx:id="scheduleList" prefHeight="300" prefWidth="300"/>
-                <Button text="Tandai Selesai (Disiram/Dipupuk)" onAction="#completeTask"/>
-            </VBox>
+                <Button text="Tandai Selesai (Disiram/Dipupuk)" onAction="#completeTask" maxWidth="300"/> </VBox>
+
         </HBox>
     </center>
 </BorderPane>

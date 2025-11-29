@@ -9,6 +9,7 @@ public class CareSchedule {
     private String action;
     private int frequencyDays;
     private LocalDate nextDueDate;
+    private boolean isDone = false;
 
     public CareSchedule(int id, int plantId, String action, int frequencyDays, LocalDate nextDueDate) {
         this.id = id;
@@ -38,8 +39,16 @@ public class CareSchedule {
         return nextDueDate;
     }
 
+    public void setDone(boolean done) {
+        this.isDone = done;
+    }
+
     @Override
     public String toString() {
-        return action + " (Tiap " + frequencyDays + " hari). Next: " + nextDueDate;
+        String status = "";
+        if (isDone) {
+            status = " (✅ Selesai)";
+        }
+        return action + " (Tiap " + frequencyDays + " hari). Next: " + nextDueDate + status;
     }
 }

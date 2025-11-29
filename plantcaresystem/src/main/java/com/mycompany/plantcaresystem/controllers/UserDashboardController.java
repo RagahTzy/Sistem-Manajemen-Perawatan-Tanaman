@@ -82,8 +82,9 @@ public class UserDashboardController {
         }
         try {
             CareDAO.completeTask(sel);
-            refreshData();
-            showAlert("Perawatan tercatat! Jadwal berikutnya sudah diupdate.");
+            sel.setDone(true);
+            scheduleList.refresh();
+            scheduleList.getSelectionModel().clearSelection();
         } catch (Exception e) {
             showAlert("Gagal: " + e.getMessage());
         }

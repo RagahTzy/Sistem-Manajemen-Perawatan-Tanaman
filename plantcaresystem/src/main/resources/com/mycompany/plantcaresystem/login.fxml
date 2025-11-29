@@ -4,7 +4,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mycompany.plantcaresystem.controllers.LoginController">
+            fx:controller="com.mycompany.plantcaresystem.controllers.LoginController"
+            prefWidth="800.0" prefHeight="600.0">
 
     <center>
         <VBox spacing="15" alignment="CENTER" style="-fx-padding: 20;">

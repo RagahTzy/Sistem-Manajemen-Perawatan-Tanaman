@@ -4,10 +4,11 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mycompany.plantcaresystem.controllers.PlantGrowthController">
+            fx:controller="com.mycompany.plantcaresystem.controllers.PlantGrowthController"
+            prefWidth="800.0" prefHeight="600.0">
     <top>
-        <HBox spacing="10" style="-fx-padding: 10;">
-            <Button text="⬅ Back" onAction="#goBack"/>
+        <HBox spacing="10" style="-fx-padding: 10;" styleClass="top-panel">
+            <Button text="⬅ Back" onAction="#goBack" styleClass="button, small"/>
             <Label fx:id="headerLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
         </HBox>
     </top>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mycompany.plantcaresystem.controllers.PlantLogController"
+            prefWidth="800.0" prefHeight="600.0">
+
+    <top>
+        <HBox spacing="10" style="-fx-padding: 10;" styleClass="top-panel">
+            <Button text="⬅ Back" onAction="#goBack" styleClass="button, small"/>
+            <Label fx:id="headerLabel" styleClass="header" style="-fx-font-size: 18px;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="15" alignment="CENTER" style="-fx-padding: 20;">
+            <Label text="Log Aktivitas User:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            
+            <ListView fx:id="logList" prefHeight="400" prefWidth="500"/>
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -32,15 +32,19 @@
                 <Label text="Update Pertumbuhan" style="-fx-font-weight: bold;"/>
                 <TextField fx:id="heightField" promptText="Tinggi (cm)" maxWidth="250"/>
                 <TextField fx:id="conditionField" promptText="Kondisi (Misal: Subur, Daun Kuning)" maxWidth="250"/>
-
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Pilih Foto" onAction="#chooseImage"/>
+                    <Label fx:id="imagePathLabel" text="Belum ada foto" style="-fx-font-size: 10px;"/>
+                </HBox>
+                <javafx.scene.image.ImageView fx:id="previewImage" fitHeight="100" fitWidth="150" preserveRatio="true"/>
                 <Button text="Simpan Laporan" onAction="#saveGrowthRecord" maxWidth="250"/>
             </VBox>
 
             <VBox spacing="10">
                 <Label text="Jadwal Perawatan (To-Do):" style="-fx-font-weight: bold;"/>
                 <ListView fx:id="scheduleList" prefHeight="300" prefWidth="300"/>
-                <Button text="Tandai Selesai (Disiram/Dipupuk)" onAction="#completeTask" maxWidth="300"/> </VBox>
-
+                <Button text="Tandai Selesai (Disiram/Dipupuk)" onAction="#completeTask" maxWidth="300"/>
+            </VBox>
         </HBox>
     </center>
 </BorderPane>

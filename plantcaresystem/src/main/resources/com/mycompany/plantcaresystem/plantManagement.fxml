@@ -36,9 +36,10 @@
             <ListView fx:id="listPlants" prefHeight="350" prefWidth="500"/>
 
             <HBox spacing="10" alignment="CENTER">
-                <Button text="Lihat Laporan Pertumbuhan" onAction="#viewGrowth" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
-                <Button text="Atur Jadwal Perawatan" onAction="#manageSchedule" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
-                <Button text="Hapus Tanaman" onAction="#deleteSelected" style="-fx-background-color: #F44336; -fx-text-fill: white;"/>
+                <Button text="Lihat Pertumbuhan" onAction="#viewGrowth" style="-fx-text-fill: white; -fx-background-color: #4CAF50;"/>
+                <Button text="Riwayat Perawatan" onAction="#viewLogs" style="-fx-text-fill: white; -fx-background-color: #FF9800;"/>
+                <Button text="Atur Jadwal" onAction="#manageSchedule" style="-fx-text-fill: white; -fx-background-color: #2196F3;"/>
+                <Button text="Hapus" onAction="#deleteSelected" style="-fx-text-fill: white; -fx-background-color: #F44336;"/>
             </HBox>
         </VBox>
     </center>

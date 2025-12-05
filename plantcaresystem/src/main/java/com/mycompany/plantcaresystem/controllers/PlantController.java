@@ -11,6 +11,21 @@ import com.mycompany.plantcaresystem.util.Context;
 public class PlantController {
 
     @FXML
+    private void viewLogs() {
+        Plant sel = listPlants.getSelectionModel().getSelectedItem();
+        if (sel == null) {
+            error("Pilih tanaman dulu.");
+            return;
+        }
+        try {
+            Context.selectedPlant = sel;
+            App.setRoot("plantLog");
+        } catch (Exception e) {
+            error(e.getMessage());
+        }
+    }
+
+    @FXML
     private void viewGrowth() {
         Plant sel = listPlants.getSelectionModel().getSelectedItem();
         if (sel == null) {

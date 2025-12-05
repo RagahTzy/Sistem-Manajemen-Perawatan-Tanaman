@@ -8,9 +8,16 @@ import com.mycompany.plantcaresystem.models.CareSchedule;
 import com.mycompany.plantcaresystem.models.Plant;
 import com.mycompany.plantcaresystem.models.User;
 import com.mycompany.plantcaresystem.util.Session;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
 public class UserDashboardController {
 
@@ -25,6 +32,11 @@ public class UserDashboardController {
     private TextField heightField;
     @FXML
     private TextField conditionField;
+    @FXML
+    private Label imagePathLabel;
+    @FXML
+    private ImageView previewImage;
+    private File selectedFile;
 
     @FXML
     public void initialize() {
@@ -47,6 +59,24 @@ public class UserDashboardController {
     }
 
     @FXML
+    private void chooseImage() {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Pilih Foto Tanaman");
+        // Filter agar cuma bisa pilih gambar
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+
+        File file = fc.showOpenDialog(null);
+        if (file != null) {
+            selectedFile = file;
+            imagePathLabel.setText(file.getName());
+
+            // Tampilkan preview
+            Image img = new Image(file.toURI().toString());
+            previewImage.setImage(img);
+        }
+    }
+
+    @FXML
     private void saveGrowthRecord() {
         Plant selected = userPlantList.getSelectionModel().getSelectedItem();
         if (selected == null) {
@@ -61,16 +91,45 @@ public class UserDashboardController {
 
             double h = Double.parseDouble(heightField.getText());
             String c = conditionField.getText();
-            GrowthDAO.add(selected.getId(), h, c);
+            String finalImagePath = "";
+
+            if (selectedFile != null) {
+                File folder = new File("user_images");
+                if (!folder.exists()) {
+                    folder.mkdir();
+                }
+
+                String ext = getFileExtension(selectedFile);
+                String newFileName = "plant_" + selected.getId() + "_" + System.currentTimeMillis() + ext;
+                File destFile = new File(folder, newFileName);
+
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+                finalImagePath = "user_images/" + newFileName;
+            }
+
+            GrowthDAO.add(selected.getId(), h, c, finalImagePath);
 
             showAlert("Laporan pertumbuhan disimpan!");
             heightField.clear();
             conditionField.clear();
+            imagePathLabel.setText("Belum ada foto");
+            previewImage.setImage(null);
+            selectedFile = null;
         } catch (NumberFormatException e) {
             showAlert("Tinggi harus berupa angka!");
         } catch (Exception e) {
             showAlert("Error: " + e.getMessage());
         }
+    }
+
+    private String getFileExtension(File file) {
+        String name = file.getName();
+        int lastIndexOf = name.lastIndexOf(".");
+        if (lastIndexOf == -1) {
+            return "";
+        }
+        return name.substring(lastIndexOf);
     }
 
     @FXML
